@@ -1,0 +1,14 @@
+name: paquete_fake_api_store_etapa_3
+description: A Dart library that consumes a store API and brings in products, users, and carts.
+version: 1.0.0
+
+environment:
+  sdk: ^3.5.3
+
+dependencies:
+  http: ^1.2.2 # api consume
+  dartz: ^0.10.1 # functional programming
+
+dev_dependencies:
+  lints: ^4.0.0
+  test: ^1.24.0
