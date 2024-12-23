@@ -23,3 +23,31 @@ Para ejecutar el ejemplo, usa el siguiente comando:
 ```
 flutter run
 ```
+
+## Ejemplo de Uso
+A continuación, se muestra un ejemplo de cómo consumir el servicio para obtener productos, usuarios y carritos:
+
+```dart
+import 'package:paquete_fake_api_store_etapa_3/src/paquete_fake_api_store_etapa_3_base.dart';
+
+void main() async {
+  // Obtener productos
+  List<ProductModel> productos = await fetchProducts();
+  print('Productos: $productos');
+
+  // Obtener usuarios
+  List<UserModel> usuarios = await fetchUsers();
+  print('Usuarios: $usuarios');
+
+  // Obtener carritos
+  List<CartModel> carritos = await fetchCarts();
+  print('Carritos: $carritos');
+}
+```
+
+### Respuesta Esperada
+La respuesta esperada de cada servicio es una lista de modelos correspondientes:
+
+- Productos: Lista de ProductModel con propiedades como title, price, rating, etc.
+- Usuarios: Lista de UserModel con propiedades como name, email, etc.
+- Carritos: Lista de CartModel con propiedades como userId, products, etc.

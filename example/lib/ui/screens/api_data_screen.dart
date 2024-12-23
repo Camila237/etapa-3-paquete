@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:paquete_fake_api_store_etapa_3/src/paquete_fake_api_store_etapa_3_base.dart';
-import 'package:paquete_fake_api_store_etapa_3/src/data/entities/cart_model.dart';
-import 'package:paquete_fake_api_store_etapa_3/src/data/entities/product_model.dart';
-import 'package:paquete_fake_api_store_etapa_3/src/data/entities/user_model.dart';
+import 'package:paquete_fake_api_store_etapa_3/src/data/models/cart_model.dart';
+import 'package:paquete_fake_api_store_etapa_3/src/data/models/product_model.dart';
+import 'package:paquete_fake_api_store_etapa_3/src/data/models/user_model.dart';
 
 /// * [ApiDataScreen] is a [StatefulWidget] that displays data fetched from an API.
 /// * It shows lists of products, users, and carts.
@@ -92,9 +92,9 @@ class _ApiDataScreenState extends State<ApiDataScreen> {
       itemBuilder: (context, index) {
         final product = _products[index];
         return ListTile(
-          title: Text(product.title),
+          title: Text(product.title?? 'Titulo no definido'),
           subtitle:
-              Text('Price: ${product.price} - Rating: ${product.rating.rate}'),
+              Text('Price: ${product.price} - Rating: ${product.rating?.rate ?? 0}'),
         );
       },
     );
@@ -109,7 +109,7 @@ class _ApiDataScreenState extends State<ApiDataScreen> {
       itemBuilder: (context, index) {
         final user = _users[index];
         return ListTile(
-          title: Text(user.name.firstname),
+          title: Text(user.name?.firstname ?? 'Nombre no definido'),
           subtitle: Text('Email: ${user.email}'),
         );
       },

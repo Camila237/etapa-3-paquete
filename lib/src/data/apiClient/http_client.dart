@@ -1,13 +1,6 @@
-import 'dart:convert';
-
 import 'package:dartz/dartz.dart';
 import 'package:http/http.dart' as http;
-import 'package:paquete_fake_api_store_etapa_3/src/data/apiClient/api_client.dart';
 import 'package:paquete_fake_api_store_etapa_3/src/data/apiClient/api_error.dart';
-import 'package:paquete_fake_api_store_etapa_3/src/data/entities/cart_model.dart';
-import 'package:paquete_fake_api_store_etapa_3/src/data/entities/product_model.dart';
-import 'package:paquete_fake_api_store_etapa_3/src/data/entities/user_model.dart';
-import 'package:paquete_fake_api_store_etapa_3/src/utils/app_constants.dart';
 
 /// * Class to make HTTP requests.
 class HttpClient {
@@ -58,65 +51,5 @@ class HttpClient {
       default:
         return 'Algo salió mal...';
     }
-  }
-}
-
-/// * Implemtation of the first API consumption
-class ProductsApiService implements ApiClient {
-  final HttpClient httpClient;
-
-  ProductsApiService(this.httpClient);
-
-  @override
-  Future<Either<ApiError, List<ProductModel>>> fetchData() async {
-    final Either<ApiError, http.Response> response = await httpClient.get('$appUrl/products/');
-    return response.fold(
-          (error) => Left(error),
-          (data) {
-        final List<dynamic> jsonList = json.decode(data.body);
-        final List<ProductModel> products = jsonList.map((json) => ProductModel.fromJson(json)).toList();
-        return Right(products);
-      },
-    );
-  }
-}
-
-/// * Implemtation of the second API consumption
-class UsersApiService implements ApiClient {
-  final HttpClient httpClient;
-
-  UsersApiService(this.httpClient);
-
-  @override
-  Future<Either<ApiError, List<UserModel>>> fetchData() async{
-    final Either<ApiError, http.Response>response = await httpClient.get('$appUrl/users/');
-    return response.fold(
-          (error) => Left(error),
-          (data) {
-        final List<dynamic> jsonList = json.decode(data.body);
-        final List<UserModel>users = jsonList.map((json) => UserModel.fromJson(json)).toList();
-        return Right(users);
-      },
-    );
-  }
-}
-
-/// * Implemtation of the third API consumption
-class CartsApiService implements ApiClient {
-  final HttpClient httpClient;
-
-  CartsApiService(this.httpClient);
-
-  @override
-  Future<Either<ApiError, List<CartModel>>> fetchData() async{
-    final Either<ApiError, http.Response> response = await httpClient.get('$appUrl/carts/');
-    return response.fold(
-          (error) => Left(error),
-          (data) {
-        final List<dynamic> jsonList = json.decode(data.body);
-        final List<CartModel> carts = jsonList.map((json) => CartModel.fromJson(json)).toList();
-        return Right(carts);
-      },
-    );
   }
 }

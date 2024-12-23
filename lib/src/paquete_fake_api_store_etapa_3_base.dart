@@ -2,9 +2,12 @@ import 'package:dartz/dartz.dart';
 import 'package:http/http.dart' as http;
 import 'package:paquete_fake_api_store_etapa_3/src/data/apiClient/api_error.dart';
 import 'package:paquete_fake_api_store_etapa_3/src/data/apiClient/http_client.dart';
-import 'package:paquete_fake_api_store_etapa_3/src/data/entities/cart_model.dart';
-import 'package:paquete_fake_api_store_etapa_3/src/data/entities/product_model.dart';
-import 'package:paquete_fake_api_store_etapa_3/src/data/entities/user_model.dart';
+import 'package:paquete_fake_api_store_etapa_3/src/data/models/product_model.dart';
+import 'package:paquete_fake_api_store_etapa_3/src/data/models/user_model.dart';
+import 'package:paquete_fake_api_store_etapa_3/src/data/models/cart_model.dart';
+import 'package:paquete_fake_api_store_etapa_3/src/domain/services/products_api_service.dart';
+import 'package:paquete_fake_api_store_etapa_3/src/domain/services/users_api_service.dart';
+import 'package:paquete_fake_api_store_etapa_3/src/domain/services/carts_api_service.dart';
 
 /// * FetchProducts gets a list of products from the API and prints them to the console.
 /// * This function uses the [ApiClient] client to make an HTTP request

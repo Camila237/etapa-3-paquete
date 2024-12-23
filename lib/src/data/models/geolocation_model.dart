@@ -1,8 +1,8 @@
 /// * The GeolocationModel class is a model class that represents a geolocation.
 /// * It contains information about the geolocation, such as the latitude and longitude.
 class GeolocationModel{
-  final String lat;
-  final String long;
+  final String? lat;
+  final String? long;
 
   GeolocationModel({
     required this.lat,
@@ -13,16 +13,16 @@ class GeolocationModel{
   factory GeolocationModel.fromJson(
       Map<String, dynamic> json) {
     return GeolocationModel(
-      lat: json['lat'],
-      long: json['long'],
+      lat: json['lat'] ?? 'Latitud no definida',
+      long: json['long'] ?? 'Longitud no definida',
     );
   }
 
   /// * The toJson method is a method that converts a GeolocationModel instance to a JSON object.
   Map<String, dynamic> toJson() {
     return {
-      'lat': lat,
-      'long': long,
+      'lat': lat ?? 'Latitud no definida',
+      'long': long ?? 'Longitud no definida',
     };
   }
 
